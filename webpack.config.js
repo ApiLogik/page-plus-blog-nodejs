@@ -7,6 +7,14 @@ module.exports = {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
     filename: 'blog-bundle.js'
   },
+  //Comment the block above and uncomment the block below to generate the landing page bundle
+  /*
+  entry: './frontend/landing-page--main.js',
+  output: {
+    path: path.resolve(__dirname, 'public', 'assets', 'js'),
+    filename: 'bundle.js'
+  },
+  */
   module: {
     rules: [{
       exclude: /node_modules/,
