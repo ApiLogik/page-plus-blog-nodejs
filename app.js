@@ -75,8 +75,5 @@ app.use(routes)
 
 //Server
 app.on('pronto', () => {
-	app.listen(process.env.PORT, () => {
-		console.log(`Server online on port ${PORT}`)//REMOVE ON PRODUCTION
-		console.log(`http://127.0.0.1:${PORT}`)//REMOVE ON PRODUCTION
-	})
+	app.listen(process.env.PORT || 5000)
 })
