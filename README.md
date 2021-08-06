@@ -7,6 +7,12 @@ Mode: Development / tests
 ***********************************
 
 ***********************************
+Deployed on Heroku
+Landing Page: https://blog-dental.herokuapp.com/
+Blog: https://blog-dental.herokuapp.com/blog
+***********************************
+
+***********************************
 Landing Page features:
 ***********************************
 - Email contact form builted in Node JS;
