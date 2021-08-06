@@ -57,6 +57,7 @@ router.post('/mail', mainSiteController.sendContactMail)
 
 //If route doesn't exist
 router.get('/blog/*', catch404Blog)
+router.get('/admin/*', catch404Blog)
 router.get('*', catch404)
 
 
