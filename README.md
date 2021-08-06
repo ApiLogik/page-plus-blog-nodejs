@@ -52,6 +52,7 @@ Technologies and packages:
 - Validator;
 - NodeMailer;
 - html-to-text;
+- CKEditor
 
 **************************************************
 By Henrique Aguiar - web developer
