@@ -74,9 +74,8 @@ app.use(csrfMiddleware)
 app.use(routes)
 
 //Server
-const PORT = process.env.PORT
 app.on('pronto', () => {
-	app.listen(PORT, () => {
+	app.listen(process.env.PORT, () => {
 		console.log(`Server online on port ${PORT}`)//REMOVE ON PRODUCTION
 		console.log(`http://127.0.0.1:${PORT}`)//REMOVE ON PRODUCTION
 	})
