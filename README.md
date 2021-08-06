@@ -3,24 +3,25 @@ LANDING PAGE + BLOG - FULL NODE JS + MONGO DB
 A business (dentistry) landing page, w/ link to a blog on the same domain using a NodeJS server.
 
 ***********************************
+
 Mode: Development / tests
-***********************************
 
 ***********************************
+
 Deployed on Heroku
 Landing Page: https://blog-dental.herokuapp.com/
+
 Blog: https://blog-dental.herokuapp.com/blog
-***********************************
 
 ***********************************
 Landing Page features:
-***********************************
+
 - Email contact form builted in Node JS;
 - Feed with the latest (three) blog posts with links to the posts and blog;
 
 ***********************************
 Blog Features:
-***********************************
+
 - Author / owner can create, edit and delete posts and categories;
 - Super user (developer) account: can create users / authors;
 - Access with username and password;
@@ -36,7 +37,7 @@ Blog Features:
 
 ***********************************
 Technologies and packages:
-***********************************
+
 - HTML, CSS, JavaScript;
 - Node JS;
 - MongoDB + Atlas;
