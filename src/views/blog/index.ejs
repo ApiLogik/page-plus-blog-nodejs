@@ -12,7 +12,7 @@
 				<% if (posts.length > 0) { %>
 					<% posts.forEach(post => { %>
 						<div class="post-single">
-							<h3><a href="/blog/post/<%=post.slug%>"><%=post.titulo%></a></h3>
+							<h3><a target="_blank" href="/blog/post/<%=post.slug%>"><%=post.titulo%></a></h3>
 							<br>
 							<small>Categoria: <a href="/blog/categories/<%=post.categoria.slug%>"><%=post.categoria.nome%></a></small>
 							<br>
@@ -24,7 +24,7 @@
 								</div>
 								<div class="post-text">
 									<p><%=post.resumo%> [...]</p>
-									<p><a class="read-more" href="/blog/post/<%=post.slug%>"> Leia mais</a></p>
+									<p><a class="read-more" target="_blank" href="/blog/post/<%=post.slug%>"> Leia mais</a></p>
 								</div>
 							</div>
 						</div>
