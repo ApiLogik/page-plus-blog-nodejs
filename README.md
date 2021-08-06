@@ -9,6 +9,7 @@ Mode: Development / tests
 ***********************************
 
 Deployed on Heroku
+
 Landing Page: https://blog-dental.herokuapp.com/
 
 Blog: https://blog-dental.herokuapp.com/blog
