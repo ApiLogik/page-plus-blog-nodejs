@@ -100,27 +100,36 @@ exports.userEdit = (req, res) => {
 				user.senha = bcryptPass(req.body.password_new)
 			}
 
-			//Can save now
-			user.nome = req.body.name
-
-			user.save().then(() => {
-				req.flash('success', 'Dados do administrador alterados com sucesso.')
-				//Update session
-				req.session.user = {
-					_id: user._id,
-					name: user.nome,
-					email: user.email,
-					suAdm: user.suAdm
+			Admin.findOne({ nome: req.body.name }).then(found => {
+				if (found) {
+					req.flash('errors', 'Nome de usuário já utilizado.')
+					return res.redirect('/blog/admin/user')
 				}
-				req.session.save(() => res.redirect('/blog/admin/user'))
+
+				//Can save now
+				user.nome = req.body.name
+
+				user.save().then(() => {
+					req.flash('success', 'Dados do administrador alterados com sucesso.')
+					//Update session
+					req.session.user = {
+						_id: user._id,
+						name: user.nome,
+						email: user.email,
+						suAdm: user.suAdm
+					}
+					req.session.save(() => res.redirect('/blog/admin/user'))
+				}).catch(err => {
+					req.flash('errors', 'Erro ao salvar os dados do usuário.')
+					return res.redirect('/blog/admin/user')
+				})
+
 			}).catch(err => {
-				console.log(err)
-				req.flash('errors', 'Erro ao salvar os dados do usuário.')
+				req.flash('errors', 'Erro ao consultar os nomes de usuário cadastrados.')
 				return res.redirect('/blog/admin/user')
 			})
-
 		}).catch(err => {
-			req.flash('errors', 'Erro ao buscar os dados do usuário.')
+			req.flash('errors', 'Erro ao consultar usuários cadastrados.')
 			return res.redirect('/blog/admin/user')
 		})
 	}
@@ -242,7 +251,7 @@ exports.createAdm = (req, res) => {
 					email: req.body.email,
 					senha: bcryptPass(req.body.password_new)
 				}
-	
+
 				new Admin(newAdmin).save().then(() => {
 					req.flash('success', 'Usuário administrador criado com sucesso.')
 					res.redirect('/blog/admin/login')
