@@ -16,9 +16,8 @@ mongoose.connect(process.env.CONNECTIONSTRING,
 		useFindAndModify: false,
 		useCreateIndex: true
 	}).then(() => {
-		app.emit('pronto');
-		console.log('Conectado ao MongoDB.')//REMOVE ON PRODUCTION
-	}).catch(e => console.log(e));
+		app.emit('pronto')
+	}).catch(e => console.log(e))
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -37,7 +36,7 @@ const limiter = rateLimit({
 	message: 'Too many requests'
 })
 
-//app.use(limiter) //ENABLE ON PRODUCTION
+app.use(limiter) //ENABLE ON PRODUCTION
 
 //Sessions
 const sessionOptions = session({
@@ -49,7 +48,7 @@ const sessionOptions = session({
 	cookie: {
 		maxAge: 1000 * 60 * 60 * 2, //2 hours
 		httpOnly: true,
-		//secure: true //ENABLE ON PRODUCTION
+		secure: true //ENABLE ON PRODUCTION
 	}
 })
 app.use(sessionOptions);
