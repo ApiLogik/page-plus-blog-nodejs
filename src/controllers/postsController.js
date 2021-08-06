@@ -141,12 +141,12 @@ exports.editPost = (req, res) => {
 				post.conteudo = req.body.content
 				post.categoria = req.body.category
 				post.resumo = req.body.summary,
-					post.autor = req.session.user._id
+				post.autor = req.session.user._id
 
 				post.save().then(() => {
 					//Deduct -1 (if > 0) from the number of posts in the previous category
 					Category.findOne({ _id: prevCategId }).then(oldCateg => {
-						oldCateg.num_posts > 0 ? oldCateg.num_posts -= 1 : false
+						if (oldCateg.num_posts > 0) oldCateg.num_posts -= 1
 						oldCateg.save()
 					}).catch(err => {
 						req.flash('errors', 'Erro ao desvincular da categoria anterior.')
@@ -188,12 +188,13 @@ exports.deletePost = (req, res) => {
 			return res.redirect('/blog/admin')
 		} else {
 			Category.findOne({ _id: post.categoria }).then(categ => {
-				categ.num_posts > 0 ? categ.num_posts -= 1 : false
+				if (categ.num_posts > 0) categ.num_posts -= 1
 				categ.save()
 				post.remove()
 				req.flash('success', 'Postagem deletada com sucesso.')
 				return res.redirect('/blog/admin')
 			}).catch(err => {
+				console.log(err)
 				req.flash('errors', 'Houve um erro ao remover a postagem da categoria.')
 				return res.redirect('/blog/admin')
 			})
