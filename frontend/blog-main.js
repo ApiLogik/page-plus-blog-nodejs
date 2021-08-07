@@ -3,12 +3,15 @@ import 'regenerator-runtime/runtime';
 import { initMenuMobile } from './modules/menu-scroll.js'
 
 const onLoad = () => {
+	const openMobile = document.querySelector('.fa-bars')
+	const menuMob = document.querySelector(".menu-mobile");
+	const openSearch = document.querySelector(".fa-search");
+	const searchField = document.querySelector(".search-mobile");
 	let scrolled = false;
 	let menuMinimized = false;
 
 	const sizeMenu = size => {
 		const menuParent = document.querySelector('header')
-		const menuMob = document.querySelector('.menu-mobile')
 		const fixHeader = document.querySelector('.fix-header')
 		const allMenuLinks = document.querySelectorAll('.menu-desktop ul li a')
 		let menuMobHeight
@@ -17,6 +20,7 @@ const onLoad = () => {
 		menuParent.className = `height-${size}`
 		size === 1 ? menuMobHeight = 70 + 'px' : menuMobHeight = 50 + 'px'
 		menuMob.style.top = menuMobHeight
+		if (searchField) searchField.style.top = menuMobHeight
 		size === 2 ? menuMinimized = true : menuMinimized = false
 
 		if (menuMinimized) {
@@ -71,7 +75,9 @@ const onLoad = () => {
 		})
 	}
 
-	initMenuMobile()
+
+	initMenuMobile(openMobile, menuMob)
+	if (openSearch && searchField) initMenuMobile(openSearch, searchField)
 	checkMenuSize()
 	initMiniModal()
 }

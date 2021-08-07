@@ -5,6 +5,8 @@ import { formValidation } from '../../modules/form-validation'
 const onLoad = () => {
 	const servicosTop = Math.floor(document.querySelector('.servicos').getBoundingClientRect().top - 100)
 	const form = document.querySelector('#form')
+	const openMobile = document.querySelector('.fa-bars')
+	const menuMobile = document.querySelector(".menu-mobile");
 
 	//Reload if width has changed
 	const initialWidth = window.innerWidth
@@ -102,7 +104,7 @@ const onLoad = () => {
 
 	//On load functions
 	formValidation(form);
-	initMenuMobile()
+	initMenuMobile(openMobile, menuMobile)
 	checkMenuSize()
 	carouselBuilder(carousel)
 }
