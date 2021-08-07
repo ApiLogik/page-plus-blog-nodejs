@@ -6,6 +6,7 @@
 		</div>
 		<div class="header-right">
 			<div class="icon-menu-mob">
+				<i class="fa fa-search" aria-hidden="true" title="Buscar no blog"></i>
 				<i class="fa fa-bars" aria-hidden="true"></i>
 			</div>
 			<!--sm-icons-->
@@ -21,10 +22,18 @@
 			<nav class="menu-mobile">
 				<ul>
 					<li><a href="/blog">Início</a></li>
-
 					<li><a href="/">Página da clínica</a></li>
+					<li><a href="#anch-categ">Categorias</a></li>
 				</ul>
 			</nav>
+
+			<div class="search-box search-mobile">
+				<form class="search-form" action="/blog/search" method="POST">
+					<%- include('./csrf') %>
+					<input type="search" name="search" placeholder="Buscar no blog..." required>
+					<button type="submit" class="btn btn-send">Buscar</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </header>

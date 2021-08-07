@@ -5,9 +5,10 @@
 
 <section class="add-categ">
 	<div class="container">
+		<%- include('../includes/messages') %>
+		<% if (!user) { %>
 		<h1>É necessário fazer o login</h1>
 
-		<%- include('../includes/messages') %>
 		<div class="card card-login">
 			<div class="card-inner">
 				<form action="/blog/admin/login" method="POST">
@@ -21,6 +22,10 @@
 				</form>
 			</div>
 		</div>
+		<% } else { %>
+			<h3>Você já está logado como "<%=user.name%>"</h3>
+			<a href="/blog/admin"><button class="btn btn-back">Voltar</button></a>
+		<% } %>
 
 	</div>
 </section>

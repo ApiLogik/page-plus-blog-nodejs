@@ -1,6 +1,6 @@
 <div class="sidebar">
 
-	<div class="search-box">
+	<div class="search-box search-desktop">
 		<form action="/blog/search" method="POST">
 			<%- include('./csrf') %>
 			<input type="search" name="search" placeholder="Buscar no blog..." required>
@@ -9,6 +9,7 @@
 	</div>
 
 	<div class="categ-box">
+		<anchor id="anch-categ"></anchor>
 		<h2>Categorias</h2>
 		<div class="categ-inner">
 			<% if (categories.length > 0) { %>
