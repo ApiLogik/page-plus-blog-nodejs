@@ -192,21 +192,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _custom_lib_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./custom-lib.js */ "./frontend/modules/custom-lib.js");
 //--------------MENU SCROLL--------------------
 
-var initMenuMobile = function initMenuMobile() {
-  var menuMobile = document.querySelector(".menu-mobile");
+var initMenuMobile = function initMenuMobile(clickTarget, scrollTarget) {
   var speed = 400;
   var delay = speed * 1.1; //re-click allowed after: speed + 10%
 
   var menuDown = false; //down = true; up = false
 
   var clicked = true;
-  document.querySelector('.icon-menu-mob').addEventListener('click', function () {
+  clickTarget.addEventListener('click', function () {
     while (clicked) {
       if (!menuDown) {
-        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideDown)(menuMobile, speed);
+        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideDown)(scrollTarget, speed);
         menuDown = true;
       } else {
-        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(menuMobile, speed);
+        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(scrollTarget, speed);
         menuDown = false;
       }
 
@@ -216,10 +215,14 @@ var initMenuMobile = function initMenuMobile() {
       }, delay);
     }
   });
-  document.querySelector('body,html').addEventListener('click', function () {
+  document.querySelector('body,html').addEventListener('click', function (e) {
+    //customization for Odonto - blog project-------
+    var parentsClass = e.target.parentElement.className;
+    if (parentsClass === 'search-box search-mobile' || parentsClass === 'search-form') return; //----------------------------------------------
+
     while (clicked) {
       if (menuDown) {
-        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(menuMobile, speed);
+        (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(scrollTarget, speed);
         menuDown = false;
       }
 
@@ -231,7 +234,7 @@ var initMenuMobile = function initMenuMobile() {
   });
   window.addEventListener('scroll', function () {
     if (window.scrollY > 0 && menuDown) {
-      (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(menuMobile, speed);
+      (0,_custom_lib_js__WEBPACK_IMPORTED_MODULE_0__.slideUp)(scrollTarget, speed);
       menuDown = false;
     }
   });
@@ -16295,12 +16298,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var onLoad = function onLoad() {
+  var openMobile = document.querySelector('.fa-bars');
+  var menuMob = document.querySelector(".menu-mobile");
+  var openSearch = document.querySelector(".fa-search");
+  var searchField = document.querySelector(".search-mobile");
   var scrolled = false;
   var menuMinimized = false;
 
   var sizeMenu = function sizeMenu(size) {
     var menuParent = document.querySelector('header');
-    var menuMob = document.querySelector('.menu-mobile');
     var fixHeader = document.querySelector('.fix-header');
     var allMenuLinks = document.querySelectorAll('.menu-desktop ul li a');
     var menuMobHeight;
@@ -16308,6 +16314,7 @@ var onLoad = function onLoad() {
     menuParent.className = "height-".concat(size);
     size === 1 ? menuMobHeight = 70 + 'px' : menuMobHeight = 50 + 'px';
     menuMob.style.top = menuMobHeight;
+    if (searchField) searchField.style.top = menuMobHeight;
     size === 2 ? menuMinimized = true : menuMinimized = false;
 
     if (menuMinimized) {
@@ -16367,7 +16374,8 @@ var onLoad = function onLoad() {
     });
   }
 
-  (0,_modules_menu_scroll_js__WEBPACK_IMPORTED_MODULE_2__.initMenuMobile)();
+  (0,_modules_menu_scroll_js__WEBPACK_IMPORTED_MODULE_2__.initMenuMobile)(openMobile, menuMob);
+  if (openSearch && searchField) (0,_modules_menu_scroll_js__WEBPACK_IMPORTED_MODULE_2__.initMenuMobile)(openSearch, searchField);
   checkMenuSize();
   initMiniModal();
 };
