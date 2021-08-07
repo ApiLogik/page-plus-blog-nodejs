@@ -19,6 +19,7 @@ Landing Page features:
 
 - Email contact form builted in Node JS;
 - Feed with the latest (three) blog posts with links to the posts and blog;
+- Responsive design;
 
 ***********************************
 Blog Features:
@@ -35,6 +36,7 @@ Blog Features:
 - Full builted in NodeJS;
 - Database: Mongo DB - Atlas;
 - Can be modified to allow creation of more users by the blog owner;
+- Responsive design
 
 ***********************************
 Technologies and packages:
