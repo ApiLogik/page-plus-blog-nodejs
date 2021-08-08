@@ -48,7 +48,7 @@ const sessionOptions = session({
 	cookie: {
 		maxAge: 1000 * 60 * 60 * 2, //2 hours
 		httpOnly: true,
-		//secure: true //ENABLE ON PRODUCTION
+		//secure: true <<!!FLASH MESSAGES ON SESSION DOESN'T SHOW!>>
 	}
 })
 app.use(sessionOptions);
