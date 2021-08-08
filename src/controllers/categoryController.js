@@ -126,8 +126,8 @@ exports.deleteCateg = (req, res) => {
 				post.categoria = cantDel._id
 				cantDel.num_posts += 1
 				post.save()
-				cantDel.save()
 			})
+			cantDel.save()
 		}).catch(err => {
 			req.flash('errors', 'Houve um erro ao consultar as postagens dessa categoria.')
 			return res.redirect('/blog/admin')
