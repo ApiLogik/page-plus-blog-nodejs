@@ -15,13 +15,6 @@ Landing Page: https://blog-dental.herokuapp.com/
 Blog: https://blog-dental.herokuapp.com/blog
 
 ***********************************
-WARNINGS:
-Emails will not be sent.
-Nodemailer is using GMAIL, GMAIL is blocking Heroku's login attempts.
-
-Solutions: another smtp email provider; or follow heroku's recommended config. First option will be implemented soon.
-
-***********************************
 Landing Page features:
 
 - Email contact form builted in Node JS;
