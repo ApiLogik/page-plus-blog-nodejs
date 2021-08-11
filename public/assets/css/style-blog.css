@@ -637,7 +637,7 @@ footer.footer {
 ***************MEDIA QUERIES***************
 */
 /*-------------width <= 1024px --------------*/
-@media (max-width: 760px) {
+@media (max-width: 768px) {
 	h1 {
 		font-size: 24px;
 		margin-bottom: 10px;
@@ -700,8 +700,8 @@ footer.footer {
 	}
 
 	.confirm-del {
-		width: 100%;
-		left: calc(50% - 170px);
+		width: 300px;
+		left: calc(50vw - 170px);
 	}
 
 	.card,
@@ -710,4 +710,10 @@ footer.footer {
 		width: 100%;
 	}
 
+}
+
+@media (max-width: 400px) {
+	.confirm-del {
+		left: calc(50vw - 160px);
+	}
 }
