@@ -1,4 +1,4 @@
-const path = require('path'); // CommonJS
+const path = require('path')
 
 module.exports = {
   mode: 'development',
@@ -9,7 +9,7 @@ module.exports = {
   },
   //Comment the block above and uncomment the block below to generate the landing page bundle
   /*
-  entry: './frontend/landing-page--main.js',
+  entry: './frontend/landing-page-main.js',
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
     filename: 'bundle.js'
