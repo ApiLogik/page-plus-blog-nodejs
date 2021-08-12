@@ -9,8 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "webpack": "webpack -w",
-	 "start": "node app.js"
+    "wp": "webpack -w",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
