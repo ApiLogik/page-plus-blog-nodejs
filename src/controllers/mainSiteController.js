@@ -32,7 +32,7 @@ exports.sendContactMail = (req, res) => {
 		
 		receiveEmail(mailBody).then(info => {
 			req.flash('success', 'Sua mensagem foi enviada! Responderemos em breve.')
-			return res.redirect('/#anch-mailsended')
+			return res.redirect('/#anch-mail-sended')
 		}).catch(err => console.log(err))
 		
 	}
