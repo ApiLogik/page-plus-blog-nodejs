@@ -6,8 +6,9 @@ const { convert } = require('html-to-text');
 exports.sendEmailBlocked = user => {
 	const filePath = path.join(__dirname, '/../views/email/alert.html')
 	let mailTemplate = fs.readFileSync(filePath, { encoding: 'utf-8' })
+		.replace(/\[main_url\]/g, process.env.MAINURL)
 		.replace('[user_name]', user.nome)
-		.replace('[link_getcode]', 'http://127.0.0.1:3000/blog/admin/get_code')
+		.replace('[link_getcode]', `${process.env.MAINURL}/blog/admin/get_code`)
 	const text = convert(mailTemplate, { wordwrap: 130 }).replace(/(\[.*?\])/g, '');
 
 	const mailBody = {
@@ -18,17 +19,18 @@ exports.sendEmailBlocked = user => {
 		text: text,
 		html: mailTemplate
 	}
-	
+
 	sendEmail(mailBody)
 }
 
 exports.sendEmailToken = (user, token) => {
 	const filePath = path.join(__dirname, '/../views/email/token.html')
 	let mailTemplate = fs.readFileSync(filePath, { encoding: 'utf-8' })
+		.replace(/\[main_url\]/g, process.env.MAINURL)
 		.replace('[user_name]', user.nome)
 		.replace('[new_code]', token)
-		.replace('[link_newpass]', `http://127.0.0.1:3000/blog/admin/change_pass?uid=${user._id}`)
-		.replace('[link_getcode]', 'http://127.0.0.1:3000/blog/admin/get_code')
+		.replace('[link_newpass]', `${process.env.MAINURL}/blog/admin/change_pass?uid=${user._id}`)
+		.replace('[link_getcode]', `${process.env.MAINURL}/blog/admin/get_code`)
 	const text = convert(mailTemplate, { wordwrap: 130 }).replace(/(\[.*?\])/g, '');
 
 	const mailBody = {
@@ -46,8 +48,9 @@ exports.sendEmailToken = (user, token) => {
 exports.sendEmailPassChanged = user => {
 	const filePath = path.join(__dirname, '/../views/email/passchanged.html')
 	let mailTemplate = fs.readFileSync(filePath, { encoding: 'utf-8' })
+		.replace(/\[main_url\]/g, process.env.MAINURL)
 		.replace('[user_name]', user.nome)
-		.replace('[link_login]', 'http://127.0.0.1:3000/blog/admin/login')
+		.replace('[link_login]', `${process.env.MAINURL}/blog/admin/login`)
 	const text = convert(mailTemplate, { wordwrap: 130 }).replace(/(\[.*?\])/g, '');
 
 	const mailBody = {
