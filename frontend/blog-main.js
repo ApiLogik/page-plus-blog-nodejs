@@ -46,7 +46,7 @@ const onLoad = () => {
 	window.addEventListener('scroll', () => checkMenuSize())
 
 	//Listen delete buttons
-	const initMiniModal = () => {111
+	const initMiniModal = () => {
 		const btnDel = document.querySelectorAll('.open-confirm')
 		const closeAbort = document.querySelectorAll('.close-abort')
 
