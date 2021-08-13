@@ -64,6 +64,7 @@ exports.createPost = (req, res) => {
 		//If there is a image: Validade and upload before saving
 		if (req.files) {
 			const image = req.files.postImg
+			image.name = createSlug(image.name)
 			uploadPath = path.resolve(process.cwd(), 'public', 'assets', 'media', image.name)
 
 			image.mv(uploadPath, err => {
@@ -114,6 +115,7 @@ exports.editPost = (req, res) => {
 		//If there is a image: Validade and upload before saving
 		if (req.files) {
 			image = req.files.postImg
+			image.name = createSlug(image.name)
 			const filePath = path.resolve(process.cwd(), 'public', 'assets', 'media', image.name)
 
 			image.mv(filePath, err => {
