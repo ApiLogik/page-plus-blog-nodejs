@@ -20,8 +20,8 @@ router.get('/blog/admin/change_pass', loginAdminController.changePassForm)
 router.post('/blog/admin/change_pass', loginAdminController.changePass)
 
 //Super User (dev) routes - create admin(editor)
-router.get('/blog/admin/create', suAdmRequired, loginAdminController.createAdmForm)
-router.post('/blog/admin/create', suAdmRequired, loginAdminController.createAdm)
+//router.get('/blog/admin/create', suAdmRequired, loginAdminController.createAdmForm)
+//router.post('/blog/admin/create', suAdmRequired, loginAdminController.createAdm)
 
 //Admin routes - index
 router.get('/blog/admin', loginRequired, indexController.indexAdm)
