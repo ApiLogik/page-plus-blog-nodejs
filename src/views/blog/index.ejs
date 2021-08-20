@@ -8,7 +8,7 @@
 
 			<div class="posts-outer">
 				<h2>Artigos recentes</h2>
-				<% if (posts.length > 0) { %>
+				<% if (posts && posts.length > 0) { %>
 					<% posts.forEach(post => { %>
 						<div class="post-single">
 							<h3><a href="/blog/post/<%=post.slug%>"><%=post.titulo%></a></h3>
